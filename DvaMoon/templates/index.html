@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="header">
+        IP
+        <select id="sel">
+            {% for i in ip %}
+            <option>{{ i.1 }}</option>
+            {% endfor %}
+        </select>
+        PORT
+        <select>
+            {% for i in ip %}
+            <option>{{ i.2 }}</option>
+            {% endfor %}
+        </select>
+        HOST
+        <select>
+            {% for i in ip %}
+            <option>{{ i.3 }}</option>
+            {% endfor %}
+        </select>
+        <input type="button" value="选择" onclick="sentData()"/>
+    </div>
+    <div class="menu">
+    </div>
+    <div class="chart"></div>
+
+    <script src="/static/jquery-1.12.4.js"></script>
+    <script>
+        function sentData() {
+            var ip=$('#sel option:selected').val();
+        console.log(ip);
+        $.ajax({
+　　　　url:'/',                             　　
+　　　　type:"POST",　　　　　　
+　　　　data:{'ip':ip},　   　
+
+　　　　//data:$('#form-id').serialiez()　　#将form表单中的所有数据打包发送到后台，效果同上，更方便
+
+　　　　success:function(data){　　
+            console.log('ojbk')　　
+　　　　}　　　　　　　　　　　　　
+    })
+        }
+
+    </script>
+</body>
+</html>

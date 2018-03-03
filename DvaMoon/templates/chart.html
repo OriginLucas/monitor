@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="refresh" content="20">
+</head>
+<body>
+    <div id="container" style="max-width:800px;height:400px">
+
+    </div>
+
+<script src="/static/highcharts.js"></script>
+<script src="/static/jquery-1.12.4.js"></script>
+<script>
+
+
+    var chart = Highcharts.chart('container', {
+    title: {
+        text: 'CPU使用率'
+    },
+    subtitle: {
+        text: '监控主机：localhost'
+    },
+    yAxis: {
+        title: {
+            text: '使用率 '
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 0
+        }
+    },
+    series: [{
+
+        name: 'CPU',
+        data : {{ data }}
+    }],
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+});
+
+</script>
+</body>
+</html>
